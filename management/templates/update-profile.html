@@ -1,0 +1,186 @@
+{% extends 'header.html' %}
+{%load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/add-student.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:50 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Preskool - Students</title>
+      
+   </head>
+   <body>
+      <div class="main-wrapper">
+         
+         
+         <div class="page-wrapper">
+            <div class="content container-fluid">
+               <div class="page-header">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <h3 class="page-title">Update</h3>
+                        <ul class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="{%url 'update-profile'%}">Complete Your Profile</a></li>
+                           <li class="breadcrumb-item">Update Your Profile</li>
+                        </ul>
+                        <br>
+                        <p style="color:red;"> Note: If You Want to Update Your Email Please Contact Your Branch<p>
+                        {%if msg%}
+                        <p class="breadcrumb-item" style="color:red;">{{msg}}</p>
+                        {%endif%}
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <form action="{% url 'update-profile' %}" method="post" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              <div class="row">
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Personal Information</span></h5>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>First Name</label>
+                                       <input type="text" name="fname" value="{{user.fname}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Last Name</label>
+                                       <input type="text"  name="lname" value="{{user.lname}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Gender</label>
+                                       <select class="form-control" name="gender">
+                                          {%if user.gender == "Male" %}
+                                             <option>Select Gender</option>
+                                             <option>Female</option>
+                                             <option selected>Male</option>
+                                             <option>Others</option>
+                                          {%elif user.gender == "Female" %}
+                                             <option>Select Gender</option>
+                                             <option selected>Female</option>
+                                             <option >Male</option>
+                                             <option>Others</option>
+                                          {%elif user.gender == "Others" %}
+                                             <option>Select Gender</option>
+                                             <option>Female</option>
+                                             <option>Male</option>
+                                             <option selected>Others</option>
+                                          {%endif%}
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Date of Birth</label>
+                                       <div>
+                                          <input type="date" name="dob" value="{{user.dob}}" class="form-control">
+                                       </div>
+                                    </div>
+                                 </div>
+                                
+                                 
+                                 
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Mobile Number</label>
+                                       <input type="number" name="mobile" value="{{user.mobile}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Admission Number</label>
+                                       <input type="text" value="{{user.pk}}"class="form-control" readonly>
+                                    </div>
+                                 </div>
+                                  <hr>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Student Image</label><br>
+                                       
+                                       <img  class="rounded-circle" src="{{request.session.profile_pic}}" height="50px" width="50px">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Student Image</label>
+                                       <input type="file" name="profile_pic" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Parent Information</span></h5>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Father's Name</label>
+                                       <input type="text" name="father_name" value="{{user.father_name}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Father's Occupation</label>
+                                       <input type="text" name="father_occu" value="{{user.father_occu}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Father's Mobile</label>
+                                       <input type="number" name="fmobile" value="{{user.fmobile}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Father's Email</label>
+                                       <input type="email"  name="femail" value="{{user.femail}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Mother's Name</label>
+                                       <input type="text" name="mother_name" value="{{user.mother_name}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Mother's Occupation</label>
+                                       <input type="text" name="mother_occu" value="{{user.mother_occu}}" class="form-control">
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Present Address</label>
+                                       <textarea class="form-control"  name="present_addr">{{user.present_addr}}</textarea>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Permanent Address</label>
+                                       <textarea class="form-control"  name="permanent_addr">{{user.permanent_addr}}</textarea>
+                                    </div>
+                                 </div>
+                                 <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   </body>
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/add-student.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:50 GMT -->
+</html>
+{%endblock%}

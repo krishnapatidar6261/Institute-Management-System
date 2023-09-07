@@ -1,0 +1,79 @@
+{% extends 'header.html' %}
+{%load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/students.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:43 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Preskool - Students</title>
+      
+   </head>
+   <body>
+      <div class="main-wrapper">
+         
+         
+         <div class="page-wrapper">
+            <div class="content container-fluid">
+               <div class="page-header">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <h3 class="page-title">Students</h3>
+                        <ul class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="/">Dashboard </a></li>
+                           <li class="breadcrumb-item active">Top Students</li>
+                        </ul>
+                     </div>
+                     
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table">
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table class="table table-hover table-center mb-0 datatable">
+                                 <thead>
+                                    <tr>
+                                       <th>ID</th>
+                                       <th>Name</th>
+                                       <th>Branch</th>
+                                       <th>%</th>
+                                       <th>Parent Name</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    
+                                    <tr>
+                                       <td>PRE2213</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <span class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{%static 'assets/img/profiles/avatar-03.jpg'%}" alt="User Image"></span>
+                                             Malynne
+                                          </h2>
+                                       </td>
+                                       <td>8 A</td>
+                                       <td>3 June 2010</td>
+                                       <td>Fields Malynne</td>
+                                      
+                                       <td class="text-right">
+                                          
+                                       </td>
+                                    </tr>
+                                    </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+      </div>
+      
+   </body>
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/students.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:49 GMT -->
+</html>
+{% endblock  %}
