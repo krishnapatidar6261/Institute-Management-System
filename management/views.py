@@ -34,11 +34,14 @@ def pharmacy(request):
     return render(request,'pharmacy.html')
 
 def holiday(request):
-    user=User.objects.get(email=request.session['email'])
-    if user.user_type=="student":
-        return render(request,'holiday.html')
-    else:
-        return render(request,'holiday.html')
+        user=User.objects.get(email=request.session['email'])
+        holiday=Holiday.objects.all().order_by('-id')
+        if user.user_type=="student":
+            return render(request,'holiday.html',{'holiday':holiday})
+        elif user.user_type=="teacher":
+            return render(request,'teacherHoliday.html',{'holiday':holiday})
+        else:
+            return render(request,'HOD-Holiday.html',{'holiday':holiday})
 def fees(request):
     user=User.objects.get(email=request.session['email'])
     if user.user_type=="student":
@@ -308,7 +311,6 @@ def delete_member(request,pk):
     user=User.objects.get(email=request.session['email'])
     member=User.objects.get(pk=pk)
     member.delete()
-    msg="Student Delete Successfully"
     if user.user_type=="teacher":
         return redirect('student-list')
     else:

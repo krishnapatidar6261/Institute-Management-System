@@ -32,11 +32,16 @@ class User(models.Model):
     permanent_addr=models.CharField( max_length=50,null=True,blank=True)
     branch=models.CharField(max_length=50, choices=br)
     
-    
-
-    
-    
-    
     def __str__(self):
         
         return self.email
+    
+    
+class Holiday(models.Model):
+    holiday_name=models.CharField(max_length=50)
+    holiday_type=models.CharField(max_length=50)
+    start_date=models.CharField(max_length=50)
+    end_date=models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.start_date+" "+self.holiday_name
