@@ -157,13 +157,15 @@ def update_profile(request):
         user.fmobile=request.POST['fmobile']
         user.father_occu=request.POST['father_occu']
         user.mother_name=request.POST['mother_name']
+        user.mother_occu=request.POST['mother_occu']
+        user.present_addr=request.POST['present_addr']
+        user.permanent_addr=request.POST['permanent_addr']
         
         try:
             user.profile_pic=request.FILES['profile_pic']
             user.dob=request.POST['dob']
         except Exception as e:
-            print(e)
-            pass
+           pass
         user.save()
         request.session['profile_pic']=user.profile_pic.url
         msg="Profile Updated Successfully"
